@@ -1,0 +1,51 @@
+<odoo>
+    <data>
+
+       <record id="action_hms_department" model="ir.actions.act_window">
+            <field name="name">department</field>
+            <field name="res_model">hms.department</field>
+        </record>
+        <record id='hms_tree_view_dep' model='ir.ui.view'>
+            <field name="name">hms Tree View_dep</field>
+            <field name="model">hms.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="Department_name"/>
+                    <field name="Capacity"/>
+                    <field name="is_opened"/>
+                </tree>
+            </field>
+        </record>
+        <record id='hms_form_view_dep' model='ir.ui.view'>
+            <field name="name">hms Form View</field>
+            <field name="model">hms.department</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook>
+                            <page string="Department Info">
+                                <group>
+                                    <field name="Department_name"/>
+                                    <field name="Capacity"/>
+                                    <field name="is_opened"/>
+                                </group>
+                            </page>
+                            <page string="Patients Info">
+                                <field name="patient_ids">
+                                    <tree>
+                                        <field name="firstName"/>
+                                        <field name="lastName"/>
+                                        <field name="age"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="menu_hms_department" name="Department" parent="menu_hms" action="action_hms_department"/>
+
+    </data>
+</odoo>

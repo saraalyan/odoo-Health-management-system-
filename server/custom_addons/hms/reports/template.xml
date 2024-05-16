@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <template id="hms_patient_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h1 class="text-danger text-center">Patient Status Report</h1>
+                            <div class="row">
+                                <div class="col-5">
+                                    <h3>
+                                        <span class="font-weight-bold">Name:</span>
+                                        <span t-field="o.firstName"/> <span t-field="o.lastName"/>
+                                    </h3>
+                                    <h3>
+                                        <span class="font-weight-bold">Age:</span>
+                                        <span t-field="o.age"/>
+                                    </h3>
+                                    <h3>
+                                        <span class="font-weight-bold">Department:</span>
+                                        <span t-field="o.department_name_id"/>
+                                    </h3>
+                                    <h3>
+                                        <span class="font-weight-bold">Doctors:</span>
+                                        <span t-field="o.doctor_name_id"/>
+                                    </h3>
+                                </div>
+                                <div class="col-5">
+                                    <h3>
+                                        <span class="font-weight-bold">Birth date:</span>
+                                        <span t-field="o.date_birth"/>
+                                    </h3>
+                                    <h3>
+                                        <span class="font-weight-bold">PCR:</span>
+                                        <span t-field="o.pcr"/>
+                                    </h3>
+                                    <h3>
+                                        <span class="font-weight-bold">Blood Type:</span>
+                                        <span t-field="o.blood_type"/>
+                                    </h3>
+<!--                                    <h3>-->
+<!--                                        <span class="font-weight-bold">Email:</span>-->
+<!--                                        <span t-field="o.email"/>-->
+<!--                                    </h3>-->
+                                </div>
+                            </div>
+                            <h2 class="text-danger text-center my-5">Log History</h2>
+                            <table class="table table-primary text-center">
+                                <thead-dark>
+                                    <tr>
+                                        <th class="font-weight-bold">USER</th>
+                                        <th class="font-weight-bold">DATE</th>
+                                        <th class="font-weight-bold">INFO</th>
+                                    </tr>
+                                </thead-dark>
+                                <tbody>
+                                    <t t-foreach="o.log_history_id" t-as="log">
+                                        <tr>
+                                            <td><span t-field="log.create_uid"/></td>
+                                            <td><span t-esc="log.create_date"/></td>
+                                            <td><span t-esc="log.Description"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
